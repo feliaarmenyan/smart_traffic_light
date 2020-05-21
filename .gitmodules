@@ -1,0 +1,3 @@
+[submodule "scylla-yolo-v3"]
+	path = scylla-yolo-v3
+	url = https://bitbucket.org/develandoo/scylla-yolo-v3
