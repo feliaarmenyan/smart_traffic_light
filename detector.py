@@ -7,7 +7,7 @@ import cv2
 
 
 class Detector(object):
-    def __init__(self, yolo_pat, confidence=0.5, threshold=0.3, gpu_id=0):
+    def __init__(self, yolo_pat, confidence=0.1, threshold=0.9, gpu_id=0):
         """
         :param yolo_pat: path to YOLO directory.
         :param confidence: minimum probability to filter weak detections.
@@ -15,9 +15,18 @@ class Detector(object):
         """
         self.confidence = confidence
         self.threshold = threshold
-        weights_path = os.path.sep.join([yolo_pat, "yolov3-spp.weights"])
-        config_path = os.path.sep.join([yolo_pat, "yolov3-spp.cfg"])
-        labels_path = os.path.sep.join([yolo_pat, "coco.names"])
+        # weights_path = os.path.sep.join([yolo_pat, "yolov3-spp.weights"])
+        # config_path = os.path.sep.join([yolo_pat, "yolov3-spp.cfg"])
+        # labels_path = os.path.sep.join([yolo_pat, "coco.names"])
+
+        weights_path = '/media/user/DATA/models/vehicle_model/vehicle_100000.weights'
+        config_path = '/media/user/DATA/models/vehicle_model/vehicle.cfg' 
+        labels_path = '/media/user/DATA/models/vehicle_model/vehicle.names'
+
+        # weights_path = './yolo/yolov3-tiny_220000.weights'
+        # config_path = './yolo/yolov3-tiny.cfg' 
+        # labels_path = './yolo/yolo.names'
+
         dn.set_gpu(gpu_id)
         self.net = dn.load_net(config_path.encode('utf-8'), weights_path.encode('utf-8'), 0)
         self.meta = dn.load_names(labels_path.encode('utf-8'))

@@ -1,1 +1,3 @@
-./yolov3-spp.weights
+./*.weights
+./*.mp4
+./__pycache__
